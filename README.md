@@ -24,7 +24,7 @@ virtual interface setting( sudo for root authority)
 $ sudo openvpn --mktun --dev tun2  
 $ sudo ip link set tun2 up  
 $ sudo ip addr add 192.168.0.2/24 dev tun2		//set virtual ip address  
-$ sudo ip link set dev tun2 mtu 500  			//set tun interface mtu to 500 bytes  
+$ sudo ip link set dev tun2 mtu 1200  			//set tun interface mtu to 1200 bytes  
 $ ifconfig 										//check all config is right  
 
 --------
