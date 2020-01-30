@@ -7,9 +7,9 @@ dameon, a tunneling program using udp socket supporting NB-IoT Device or Managem
 	for Management Host uses -s argument
 switch_server, a proxy udp server, redirecting two sockets between NB-IoT devices and Management Host
 
-    |--------------|        |-----------|      |---------|
-    |   NB-IoT Rpi |========|   proxy   |======|  Host   |
-    |--------------|        |-----------|      |---------|
+    |--------------|        |-----------|      |--------|
+    |  NB-IoT Rpi  |========|   proxy   |======|  Host  |
+    |--------------|        |-----------|      |--------|
 
 -----
 
@@ -41,5 +41,3 @@ for daemon:
 
 for switch:
 	$ ./switch <Port for NB-IoT Device> <Port for Management Host>
-
- ./daemon -i tun11 -c 140.113.24.215 -p 3335 -d
