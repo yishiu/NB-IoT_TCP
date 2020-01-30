@@ -32,7 +32,7 @@ $ ifconfig 										//check all config is right
 Usage:   
 
 for daemon:  
-	$ sudo ./daemon -i <ifacename> [-s|-c <proxyIP>] [-p <port>] [-d]  
+	$ sudo ./daemon -i <ifacename> [-s|-c \<proxyIP\>] [-p \<port\>] [-d]  
 	
 -i <ifacename>: Name of interface to use (mandatory)  
 -s -c <proxyIP>: run in Management Host (-s), or NB-IoT Device (-c) and specify proxyIP address (mandatory)  
@@ -40,6 +40,6 @@ for daemon:
 -d: outputs debug information while running  
 
 for switch:  
-	$ ./switch <Port for NB-IoT Device> <Port for Management Host>  
+	$ ./switch \<Port for NB-IoT Device\> \<Port for Management Host\>  
 	
 --------
