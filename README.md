@@ -1,19 +1,21 @@
 Refer to http://backreference.org/2010/03/26/tuntap-interface-tutorial/ 
 
 -----
-dameon, a tunneling program using udp socket supporting NBIOT or Ethernet
-	for NBIOT uses -c argument
-	for Ethernet uses -s argument
-switch_server, a proxy udp server, redirecting two sockets between NBIOT devices and Host Computers
 
-	|--------------|        |-----------|      |---------|
-	|	NBIOT Rpi  |========|   proxy   |======|  Host   |
-	|--------------|        |-----------|      |---------|
+dameon, a tunneling program using udp socket supporting NB-IoT Device or Management Host 
+	for NB-IoT Device uses -c argument
+	for Management Host uses -s argument
+switch_server, a proxy udp server, redirecting two sockets between NB-IoT devices and Management Host
+
+    |--------------|        |-----------|      |---------|
+    |   NB-IoT Rpi |========|   proxy   |======|  Host   |
+    |--------------|        |-----------|      |---------|
 
 -----
+
 To compile two programs
-$ gcc daemon.c -o daemon -lpthread
-$ gcc switch_server.c -o switch
+$ gcc daemon_transparentMODE_slip.c slip.c -o daemon
+$ gcc switch_server_transparent_slip_nomap.c slip.c -o switch
 
 -----
 
@@ -28,14 +30,16 @@ $ ifconfig 										//check all config is right
 --------
 
 Usage: 
+
 for daemon:
-	$ sudo ./daemon -i <ifacename> [-s<proxyIP>|-c <proxyIP>] [-p <port>] [-d]
+	$ sudo ./daemon -i <ifacename> [-s|-c <proxyIP>] [-p <port>] [-d]
 	
 -i <ifacename>: Name of interface to use (mandatory)
--s<proxyIP>|-c<proxyIP>: run in Host Computers (-s), or NBIOT deivces (-c) and specify proxyIP address(mandatory)
+-s -c <proxyIP>: run in Management Host (-s), or NB-IoT Device (-c) and specify proxyIP address (mandatory)
 -p <port>: specify proxy's open port (mandatory)
 -d: outputs debug information while running
 
 for switch:
-	$ ./switch <Port for nbiot> <Port for host>
+	$ ./switch <Port for NB-IoT Device> <Port for Management Host>
 
+ ./daemon -i tun11 -c 140.113.24.215 -p 3335 -d
